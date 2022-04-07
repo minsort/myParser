@@ -10,7 +10,7 @@ import lombok.*;
 public class Post {
 
     private String title;
-    private String datailsLink;
+    private String detailsLink;
     private String autor;
     private String autorDetailsLink;
     private String dateOfCreated;
