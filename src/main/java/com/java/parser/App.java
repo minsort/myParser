@@ -14,10 +14,13 @@ public class App {
     public static void main(String[] args) throws IOException {
 
         List<Post> posts = new ArrayList<>();
+
         //Подключаемся к странице - теперь все в doc
         Document doc = Jsoup.connect("https://4pda.to/").get();
 
-        System.out.println("Заголовок главной страницы:" + doc.title() + "Адрес сайта" + doc.baseUri());
+        System.out.println("Заголовок главной страницы: " + doc.title() + "\nАдрес сайта: " + doc.baseUri());
+        StringBuffer a = new StringBuffer("Ожидайте... Поиск результатов");
+        System.out.println(a);
 
         //Осуществляем поиск по атрибутам и значению и результат кладем в hrefs
         Elements hrefs = doc.getElementsByAttributeValue("itemprop", "url");
@@ -44,5 +47,6 @@ public class App {
             posts.add(post);
         }
         posts.forEach(System.out::println);
+
     }
 }
