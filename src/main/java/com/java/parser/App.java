@@ -4,6 +4,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,9 +14,16 @@ import java.util.List;
 
 public class App {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
-        List<Post> posts = new ArrayList<>();
+        System.setProperty("webdriver.chrome.driver", "selenium\\chromedriver.exe");
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.get("https://4pda.to/");
+
+
+
+
+       /* List<Post> posts = new ArrayList<>();
 
         //Подключаемся к странице - теперь все в doc
         Document doc = Jsoup.connect("https://4pda.to/").get();
@@ -46,7 +56,7 @@ public class App {
             post.setDateOfCreated(postDeteilsDoc.getElementsByClass("date").first().text());
             posts.add(post);
         }
-        posts.forEach(System.out::println);
+        posts.forEach(System.out::println);*/
 
     }
 }
