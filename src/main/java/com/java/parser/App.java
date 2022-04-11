@@ -1,16 +1,9 @@
 package com.java.parser;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class App {
 
@@ -19,11 +12,23 @@ public class App {
         System.setProperty("webdriver.chrome.driver", "selenium\\chromedriver.exe");
         WebDriver webDriver = new ChromeDriver();
         webDriver.get("https://4pda.to/");
+        for (int i=2;i<=3;i++){
+            WebElement paginationButton = webDriver.findElement(By.xpath("//*[@id=\"RiQkeIPQCR\"]/ul/li[" + i + "]/a"));
+
+            paginationButton.click();
+            WebElement poostButton = webDriver.findElement(By.xpath("//*[@id=\"RiQkeIPQCR\"]/article[1]/div[2]/h2/a/span"));
+            poostButton.click();
+
+            WebElement poostButton2 = webDriver.findElement(By.xpath("//*[@id=\"NOkqh5JBuQDgYZYmj8\"]/article[2]/div[2]/h2/a/span"));
+            poostButton2.click();
+        }
 
 
 
+       /*
+       JSOUP!!!!!!!!!
 
-       /* List<Post> posts = new ArrayList<>();
+       List<Post> posts = new ArrayList<>();
 
         //Подключаемся к странице - теперь все в doc
         Document doc = Jsoup.connect("https://4pda.to/").get();
